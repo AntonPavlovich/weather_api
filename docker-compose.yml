@@ -11,6 +11,8 @@ services:
       - 5000:5000
     depends_on:
       - weather-db
+    env_file:
+      - .env  
 
 
   weather-db:
@@ -20,4 +22,6 @@ services:
       - ./backup:/var/lib/postgresql/data 
     ports:
       - 5432:5432
+    env_file:
+      - .env  
       
