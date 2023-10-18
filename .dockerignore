@@ -1,0 +1,5 @@
+/server/node_modules
+.git
+/server/test
+/server/dist
+/server/.prettierrc

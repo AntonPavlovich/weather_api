@@ -1,0 +1,23 @@
+version: '2.9'
+
+services:
+
+  server:
+    build: 
+      context: ./server
+    volumes:
+      - ./server:/server
+    ports: 
+      - 5000:5000
+    depends_on:
+      - weather-db
+
+
+  weather-db:
+    image: postgres:16.0-alpine3.18
+    # for test project i think it will be better to store backup within project directory
+    volumes:
+      - ./backup:/var/lib/postgresql/data 
+    ports:
+      - 5432:5432
+      
