@@ -1,4 +1,9 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('weather_data')
 export class WeatherData {
@@ -8,22 +13,22 @@ export class WeatherData {
   @Column({
     type: 'decimal',
   })
-  lat: number
+  lat: number;
 
   @Column({
-    type: 'decimal'
+    type: 'decimal',
   })
-  lon: number
+  lon: number;
 
   @Column({
     type: 'jsonb',
-    nullable: false
+    nullable: false,
   })
-  data: string
+  data: string;
 
   @CreateDateColumn({
     type: 'timestamp',
-    default: () => "CURRENT_TIMESTAMP(6)"
+    default: () => 'CURRENT_TIMESTAMP(6)',
   })
-  createdAt: Date
+  createdAt: Date;
 }

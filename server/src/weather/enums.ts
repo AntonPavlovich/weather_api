@@ -3,5 +3,5 @@ export enum Part {
   minutely = 'minutely',
   hourly = 'hourly',
   daily = 'daily',
-  alerts = 'alerts'
+  alerts = 'alerts',
 }

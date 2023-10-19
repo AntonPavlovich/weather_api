@@ -14,31 +14,35 @@ export class WeatherService {
   constructor(
     @InjectRepository(WeatherData)
     private readonly weatherRepository: Repository<WeatherData>,
-    private readonly httpService: HttpService, 
-    private readonly configService: ConfigService
+    private readonly httpService: HttpService,
+    private readonly configService: ConfigService,
   ) {}
 
-  async getWeatherDataFromExternalAPI(saveWeatherDto: SaveWeatherDataDto): Promise<JSON> {
+  async getWeatherDataFromExternalAPI(
+    saveWeatherDto: SaveWeatherDataDto,
+  ): Promise<JSON> {
     const { baseUrl, apiKey: appid } = this.configService.get('weatherApi');
     const { lat, lon, part } = saveWeatherDto;
     const exclude = part?.join(',');
 
     const { data } = await firstValueFrom(
-      this.httpService.get(baseUrl, {
-        params: {
-          lat,
-          lon,
-          exclude,
-          appid
-        }
-      }).pipe(
-        catchError((error: AxiosError) => {
-          throw error;
+      this.httpService
+        .get(baseUrl, {
+          params: {
+            lat,
+            lon,
+            exclude,
+            appid,
+          },
         })
-      )
-    )
+        .pipe(
+          catchError((error: AxiosError) => {
+            throw error;
+          }),
+        ),
+    );
     return data;
-  }  
+  }
 
   async saveWeatherRecord(weatherData) {
     const { lon, lat } = weatherData;
@@ -52,19 +56,19 @@ export class WeatherService {
 
     const { data } = await this.weatherRepository.findOne({
       where: {
-        lat, lon
+        lat,
+        lon,
       },
       order: {
-        'createdAt': 'DESC'
-      }
+        createdAt: 'DESC',
+      },
     });
 
-    if ( part?.length ) {
+    if (part?.length) {
       return part?.reduce((acc, curr) => {
         return omit(curr, acc);
       }, data);
     }
     return data;
   }
-
 }

@@ -8,18 +8,18 @@ const {
   DATABASE_HOST,
   APP_PORT,
   WEATHER_API_KEY,
-  WEATHER_API_URL
+  WEATHER_API_URL,
 } = process.env;
 
 interface Config {
   database: PostgresConnectionOptions;
   common: {
-    appPort: number
-  },
+    appPort: number;
+  };
   weatherApi: {
-    apiKey: string,
-    baseUrl: string
-  }
+    apiKey: string;
+    baseUrl: string;
+  };
 }
 
 export const config = {
@@ -34,10 +34,10 @@ export const config = {
     migrations: ['./dist/database/migrations/*.js'],
   },
   common: {
-    appPort: APP_PORT ?? 5000
+    appPort: APP_PORT ?? 5000,
   },
   weatherApi: {
     apiKey: WEATHER_API_KEY,
-    baseUrl: WEATHER_API_URL
-  }
+    baseUrl: WEATHER_API_URL,
+  },
 } as Config;

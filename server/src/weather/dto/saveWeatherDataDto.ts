@@ -1,5 +1,12 @@
-import { IsArray, IsEnum, IsNumber, IsOptional, Max, Min } from "class-validator";
-import { Part } from "../enums";
+import {
+  IsArray,
+  IsEnum,
+  IsNumber,
+  IsOptional,
+  Max,
+  Min,
+} from 'class-validator';
+import { Part } from '../enums';
 
 export class SaveWeatherDataDto {
   @IsNumber()
@@ -11,7 +18,7 @@ export class SaveWeatherDataDto {
   @Min(-180)
   @Max(180)
   lon: number;
-  
+
   @IsOptional()
   @IsArray()
   @IsEnum(Part, { each: true })

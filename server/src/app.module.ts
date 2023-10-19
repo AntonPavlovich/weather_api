@@ -5,16 +5,16 @@ import { WeatherModule } from './weather/weather.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { config } from './config/config';
-import dataSource from './database/dataSource'
+import dataSource from './database/dataSource';
 
 @Module({
   imports: [
-    WeatherModule, 
+    WeatherModule,
     TypeOrmModule.forRoot({ ...dataSource?.options }),
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [() => config]
-    })
+      load: [() => config],
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

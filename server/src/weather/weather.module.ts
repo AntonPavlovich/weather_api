@@ -6,10 +6,7 @@ import { WeatherController } from './weather.controller';
 import { WeatherService } from './weather.service';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([WeatherData]),
-    HttpModule
-  ],
+  imports: [TypeOrmModule.forFeature([WeatherData]), HttpModule],
   providers: [WeatherService],
   controllers: [WeatherController],
 })
