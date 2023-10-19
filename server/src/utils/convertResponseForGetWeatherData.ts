@@ -1,4 +1,4 @@
-import { Part } from 'src/weather/enums';
+import { Part } from '../weather/enums';
 
 enum Keys {
   sunrise = 'sunrise',

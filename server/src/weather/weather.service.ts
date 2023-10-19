@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { WeatherData } from 'src/database/entities/WeatherData';
+import { WeatherData } from '../database/entities/WeatherData';
 import { Repository } from 'typeorm';
 import { SaveWeatherDataDto } from './dto/saveWeatherDataDto';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { catchError, firstValueFrom } from 'rxjs';
 import { AxiosError } from 'axios';
-import { omit } from 'src/utils/omitKey';
+import { omit } from '../utils/omitKey';
 
 @Injectable()
 export class WeatherService {
