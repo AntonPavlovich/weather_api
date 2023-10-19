@@ -5,7 +5,7 @@ export class GetWeatherDataDto {
   lat: string;
 
   @IsString()
-  lon: number;
+  lon: string;
 
   @IsOptional()
   part: string[];

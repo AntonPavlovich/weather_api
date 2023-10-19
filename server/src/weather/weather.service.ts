@@ -18,9 +18,7 @@ export class WeatherService {
     private readonly configService: ConfigService,
   ) {}
 
-  async getWeatherDataFromExternalAPI(
-    saveWeatherDto: SaveWeatherDataDto,
-  ): Promise<JSON> {
+  async getWeatherDataFromExternalAPI(saveWeatherDto: SaveWeatherDataDto) {
     const { baseUrl, apiKey: appid } = this.configService.get('weatherApi');
     const { lat, lon, part } = saveWeatherDto;
     const exclude = part?.join(',');
